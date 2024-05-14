@@ -1,0 +1,121 @@
+@import 'tailwindcss/utilities.css';
+
+
+.to-do-title h1 {
+  @apply text-2xl font-bold tracking-wide;
+}
+
+.to-do-title {
+  @apply  text-2xl tracking-wide text-white;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  padding: 1.5rem;
+  background: linear-gradient(to left, #f4b505, #c22626, #8f4ff5);
+  text-align: center;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 350px;
+  width: 100%;
+}
+
+.to-do-frame {
+    @apply text-3xl tracking-wide text-white ;
+    padding: 1.5rem;
+      background: linear-gradient(to left, #f4b505, #c22626, #8f4ff5);
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      border-radius: 10px; 
+      padding: 20px; 
+      margin: 20px auto; 
+      max-width: 900; 
+      width: 100%; 
+  }
+
+  .to-do-button{
+    background: #8758ff;
+    color: #fff;
+    border: none;
+    padding: 0.1rem;
+    margin-top: 1rem;
+    border: 0.7px solid #8758ff;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+
+.to-do-button:hover {
+  background-color: #45a049;
+}
+  
+
+  .to-do-input-field {
+    outline: none;
+    background: none;
+    border: 0.7px solid #8758ff;
+    padding: 0.1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 450px;
+    color:white;
+    font-size: 1.5rem;
+
+  }
+  
+  .to-do-input-field::placeholder {
+    color: #ffffff4d;
+  }
+
+.to-do-input-field:focus {
+  border-color: rgba(0, 0, 0, 0.3);
+  border: 0.7px solid #8758ff;
+
+}
+
+
+
+.to-do-item {
+  outline: none;
+    background: none;
+    border: 0.7px solid #8758ff;
+    padding: 0.1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 450px;
+    color:white;
+    font-size: 1.5rem;
+}
+
+
+  
+  /* Responsivenes Media Queries */
+
+@media (max-width: 600px) {
+  .to-do-title {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .to-do-frame {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .to-do-input-field {
+    width: 90%;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+
+  .to-do-button {
+    width: 90%;
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+
+  .to-do-item {
+    width: 90%;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+}

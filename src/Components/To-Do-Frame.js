@@ -1,10 +1,14 @@
 import React from 'react';
-import './To-Do-Frame.css';
+import './style.css';
+import ToDoList from './To-Do-List';
+import ToDoAdd from './To-Do-Add';
 
-const ToDoFrame = ({ children }) => {
+
+const ToDoFrame = ({tasks,  addTask }) => { 
   return (
     <div className="to-do-frame">
-      {children}
+      <ToDoAdd addTask={addTask} />
+      <ToDoList tasks={tasks} />
     </div>
   );
 };
