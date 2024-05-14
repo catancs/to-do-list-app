@@ -6,6 +6,7 @@ import ToDoTitle from './Components/To-Do-Title';
 
 function App() {
   const [tasks, setTasks] = useState([]); //contains tasks
+  
 
   function addTask(task) {
     const newTask = {
