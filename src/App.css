@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background: url('images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-attachment: fixed; /*background img will be fixed when scrolling */
+  margin: 0;
+
+}
+
