@@ -29,7 +29,7 @@ function ToDoAdd  ({ addTask })  {
         className="to-do-input-field"
         placeholder="Type your task here..."
       />
-      <button onClick={addNewTask} className="to-do-button">
+      <button onClick={addNewTask} className="add-task-button">
         Add Task
       </button>
     </div>

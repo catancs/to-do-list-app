@@ -4,12 +4,14 @@ import ToDoList from './To-Do-List';
 import ToDoAdd from './To-Do-Add';
 
 
-const ToDoFrame = ({tasks,  addTask }) => { 
+const ToDoFrame = ({tasks,  addTask, taskRemove, edit }) => { 
   return (
     <div className="to-do-frame">
       <ToDoAdd addTask={addTask} />
-      <ToDoList tasks={tasks} />
+      <ToDoList tasks={tasks} taskRemove={taskRemove} edit={edit}
+       />
     </div>
+    
   );
 };
 
