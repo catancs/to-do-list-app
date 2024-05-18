@@ -25,7 +25,7 @@ code {
 }
 
 .tooltip-content {
-  background: linear-gradient(to left, #f4b505, #c22626, #8f4ff5);
+  background: linear-gradient(to left, rgba(244, 181, 5, 0.6), rgba(194, 38, 38, 0.6), rgba(143, 79, 245, 0.6)); 
   text-align: center;
   font-family: 'Roboto', sans-serif;
   border-radius: 10px;

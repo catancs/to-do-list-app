@@ -1,8 +1,13 @@
 //import logo from './logo.svg';
 import ToDoFrame from './Components/To-Do-Frame';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+//import './App.css';
+//import ToDoTitle from './Components/To-Do-Title';
 import React, { useState } from 'react';
 import './App.css';
 import ToDoTitle from './Components/To-Do-Title';
+import LoginPage from './Components/LoginPage';
+
 
 function App() {
   const [tasks, setTasks] = useState([]); //contains tasks
@@ -40,15 +45,21 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <ToDoTitle />
-      <main className="p-4">
-        <ToDoFrame tasks={tasks} addTask={addTask} taskRemove={taskRemove} edit={edit} />
-
-      </main>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/todo" element={
+          <div className="App">
+            <ToDoTitle />
+            <main className="p-4">
+              <ToDoFrame tasks={tasks} addTask={addTask} taskRemove={taskRemove} edit={edit} />
+            </main>
+          </div>
+        } />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
