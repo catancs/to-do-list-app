@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import './App.css';
 import ToDoTitle from './Components/To-Do-Title';
 import LoginPage from './Components/LoginPage';
+import SignupPage from './Components/SignupPage';
 
 
 function App() {
@@ -48,6 +49,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/signup" element={<SignupPage />} />
+
         <Route path="/login" element={<LoginPage />} />
         <Route path="/todo" element={
           <div className="App">

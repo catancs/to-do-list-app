@@ -284,16 +284,18 @@
 .top-left-info {
   position: fixed;
   top: 0;
-  width: 500px;
   left: 0;
+  width: 500px;
+  height: 100px;
   padding: 0.7rem;
-  height: 100px;;
   background: linear-gradient(to left, rgba(244, 181, 5, 0.6), rgba(194, 38, 38, 0.6), rgba(143, 79, 245, 0.6)); 
   text-align: center;
   border-radius: 10px;
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
 }
 
 .top-left-info p {
@@ -301,7 +303,9 @@
   padding: 0;
   color: white;
   font-size: large;
+  text-align: center; 
 }
+
 
 .pointer-events-none {
   pointer-events: none;
@@ -310,3 +314,113 @@
 .pointer-events-auto {
   pointer-events: auto;
 }
+
+@media (max-width: 1200px) {
+  .top-left-info {
+    width: 400px;
+    height: 90px;
+    font-size: medium;
+  }
+
+  .top-left-info p {
+    font-size: medium;
+  }
+}
+
+@media (max-width: 992px) {
+  .top-left-info {
+    width: 350px;
+    height: 80px;
+  }
+
+  .top-left-info p {
+    font-size: medium;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-left-info {
+    width: 300px;
+    height: 70px;
+    padding: 0.5rem;
+  }
+
+  .top-left-info p {
+    font-size: small;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-left-info {
+    width: 250px;
+    height: 60px;
+    padding: 0.5rem;
+  }
+
+  .top-left-info p {
+    font-size: small;
+  }
+}
+.work-in-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+@media (max-width: 1200px) {
+  .work-in-progress {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .work-in-progress {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-in-progress {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .work-in-progress {
+    font-size: 1.2rem;
+  }
+}
+
+
+
+@keyframes typing {
+  0% {
+    content: '';
+  }
+  25% {
+    content: '.';
+  }
+  50% {
+    content: '..';
+  }
+  75% {
+    content: '...';
+  }
+  100% {
+    content: '....';
+  }
+}
+
+.typing-dots::after {
+  content: '';
+  display: inline-block;
+  width: 1ch;
+  animation: typing 2s steps(1) infinite;
+}
+
+
