@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 import './App.css';
 import ToDoTitle from './Components/To-Do-Title';
 import LoginPage from './Components/LoginPage';
+import ToDoAdd from './Components/To-Do-Add';
+import ToDoList from './Components/To-Do-List';
 import SignupPage from './Components/SignupPage';
 
 
@@ -14,10 +16,12 @@ function App() {
   const [tasks, setTasks] = useState([]); //contains tasks
 
 
-  function addTask(task) {
+  function addTask(task, category, dueDate) {
     const newTask = {
       id: Date.now(),
       text: task,
+      category: category,
+      dueDate: dueDate,
       completed: false
     };
 
@@ -33,9 +37,27 @@ function App() {
   };
 
   function edit(id, newText) {
+    const updatedTasks = tasks.map(task => { //make array of tasks with completed status for the task with the specified id
+
+      if (task.id === id) { // if the task id matches the id of the task to be edited
+        const updatedTask = { ...task, text: newText }; //create a new task with completed status opposite to the current status
+        return updatedTask;
+      } else {
+        return task; //otherwise return the task as is
+      }
+    });
+
+    setTasks(updatedTasks);
+  }
+
+
+  function toggleTaskCompletion(id) {
     const updatedTasks = tasks.map(task => {
       if (task.id === id) {
-        const updatedTask = { ...task, text: newText };
+        const updatedTask = {
+          ...task,
+          completed: !task.completed
+        };
         return updatedTask;
       } else {
         return task;
@@ -44,6 +66,7 @@ function App() {
 
     setTasks(updatedTasks);
   }
+
 
   return (
     <Router>
@@ -56,7 +79,7 @@ function App() {
           <div className="App">
             <ToDoTitle />
             <main className="p-4">
-              <ToDoFrame tasks={tasks} addTask={addTask} taskRemove={taskRemove} edit={edit} />
+              <ToDoFrame tasks={tasks} addTask={addTask} taskRemove={taskRemove} edit={edit} toggleTaskCompletion={toggleTaskCompletion} />
             </main>
           </div>
         } />

@@ -74,7 +74,7 @@
 
 
 .add-task-button:hover {
-  background-color: #45a049;
+  background-color: #efc11c;
 }
   
 
@@ -180,7 +180,7 @@
   color: white;
 }
 .edit-button:hover, .save-button:hover {
-  background-color: #45a049;
+  background-color: #ffffff4d;
 }
 
 .button-container {
@@ -421,6 +421,35 @@
   display: inline-block;
   width: 1ch;
   animation: typing 2s steps(1) infinite;
+}
+
+
+.completed {
+  text-decoration: line-through;
+  color: white;
+}
+
+.complete-button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  margin-left: 0.7rem;
+  border: 0.7px solid #4CAF50;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.complete-button:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+  .complete-button, .edit-button, .remove-button {
+    width: 90%;
+    font-size: 1.2rem;
+    padding: 10px;
+  }
 }
 
 
