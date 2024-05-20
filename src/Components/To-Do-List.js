@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './style.css';
 
-function ToDoList({ tasks, taskRemove, edit, toggleTaskCompletion }) {
+function ToDoList({ tasks, taskRemove, edit, toggleTaskCompletion, onTaskReorder }) {
     const [editMode, setEditMode] = useState(null);
     const [editText, setEditText] = useState('');
 
