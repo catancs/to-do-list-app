@@ -27,13 +27,12 @@
   }
 }
 
-
 .to-do-title h1 {
   @apply text-2xl font-bold tracking-wide;
 }
 
 .to-do-title {
-  animation: circular-motion 4s infinite;  
+  animation: circular-motion 4s infinite;
   @apply text-2xl tracking-wide text-white;
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
@@ -60,67 +59,104 @@
   width: 100%;
 }
 
+.to-do-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  .add-task-button{
-    background: #8758ff;
-    color: #fff;
-    border: none;
-    padding: 0.1rem;
-    margin-top: 1rem;
-    border: 0.7px solid #8758ff;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-
+.add-task-button {
+  background: #8758ff;
+  color: #fff;
+  border: none;
+  padding: 0.1rem;
+  margin-top: 1rem;
+  border: 0.7px solid #8758ff;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
 
 .add-task-button:hover {
   background-color: #efc11c;
 }
-  
 
-  .to-do-input-field {
-    outline: none;
-    background: none;
-    border: 0.7px solid #8758ff;
-    padding: 0.1rem;
-    margin-top: 1rem;
-    margin-bottom: 1.2rem;
-    width: 450px;
-    color:white;
-    font-size: 1.5rem;
-
-  }
-  
-  .to-do-input-field::placeholder {
-    color: #ffffff4d;
-  }
-
-.to-do-input-field:focus {
-  border-color: rgba(0, 0, 0, 0.3);
-  border: 0.7px solid #8758ff;
-
-}
-
-
-
-.to-do-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.to-do-input-field {
+  outline: none;
   background: none;
   border: 0.7px solid #8758ff;
   padding: 0.1rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 450;
+  margin-bottom: 1.2rem;
+  width: 450px;
   color: white;
   font-size: 1.5rem;
-  height: 60px;
 }
 
+.to-do-input-field::placeholder {
+  color: #ffffff4d;
+}
 
-  
-  /* Responsivenes Media Queries */
+.to-do-input-field:focus {
+  border-color: rgba(0, 0, 0, 0.3);
+  border: 0.7px solid #8758ff;
+}
+
+.to-do-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: 0.7px solid #8758ff;
+  padding: 0.5rem;
+  margin: 1rem 0; 
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 5px; 
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.remove-button, .edit-button, .save-button, .complete-button {
+  background: #8758ff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  border: 0.7px solid #8758ff;
+  cursor: pointer;
+  font-size: 1rem;
+  flex: 1 1 30%;
+}
+
+.remove-button:hover {
+  background-color: red;
+}
+
+.edit-button:hover, .save-button:hover, .complete-button:hover {
+  background-color: #ffffff4d;
+}
+
+.edit-input {
+  flex-grow: 1;
+  padding: 0.1rem;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  color: white;
+  background: none;
+}
+
+.edit-input::placeholder {
+  color: white;
+}
+
+.complete-button {
+  background: #4CAF50;
+  border: 0.7px solid #4CAF50;
+}
 
 @media (max-width: 600px) {
   .to-do-title {
@@ -150,44 +186,24 @@
     padding: 10px;
     font-size: 1.2rem;
   }
+
+  .button-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .remove-button, .edit-button, .save-button, .complete-button {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 10px;
+    margin-left: 0;
+  }
 }
 
-.remove-button, .edit-button, .save-button {
-  background: #8758ff;
-  color: #fff;
-  border: none;
-  padding: 0.5rem;
-  margin-left: 0.7rem;
-  border: 0.7px solid #8758ff;
-  cursor: pointer;
-  font-size: 1rem;
+.completed {
+  text-decoration: line-through;
+  color: gray;
 }
-
-.remove-button:hover {
-  background-color: red;
-}
-
-.edit-input {
-  flex-grow: 1;
-  padding: 0.1rem;
-  margin-right: 1rem;
-  font-size: 1.5rem;
-  color: white;
-  background: none;
-}
-
-.edit-input::placeholder {
-  color: white;
-}
-.edit-button:hover, .save-button:hover {
-  background-color: #ffffff4d;
-}
-
-.button-container {
-  display: flex;
-}
-
-
 
 .login-container {
   display: flex;
@@ -200,14 +216,12 @@
 
 .login-form-wrapper {
   animation: breathing 3s ease-in-out infinite;
-
   max-width: 400px;
   padding: 2rem;
   background: rgba(205, 149, 196, 0.9); 
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center; 
-
 }
 
 .login-title {
@@ -306,7 +320,6 @@
   text-align: center; 
 }
 
-
 .pointer-events-none {
   pointer-events: none;
 }
@@ -361,6 +374,7 @@
     font-size: small;
   }
 }
+
 .work-in-progress {
   display: flex;
   justify-content: center;
@@ -396,8 +410,6 @@
   }
 }
 
-
-
 @keyframes typing {
   0% {
     content: '';
@@ -423,10 +435,9 @@
   animation: typing 2s steps(1) infinite;
 }
 
-
 .completed {
   text-decoration: line-through;
-  color: white;
+  color: gray;
 }
 
 .complete-button {
@@ -452,4 +463,14 @@
   }
 }
 
+.high-priority {
+  border-left: 5px solid rgb(255, 0, 0);
+}
 
+.medium-priority {
+  border-left: 5px solid yellow;
+}
+
+.low-priority {
+  border-left: 5px solid green;
+}

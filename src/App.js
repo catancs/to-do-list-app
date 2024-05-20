@@ -11,30 +11,27 @@ import ToDoAdd from './Components/To-Do-Add';
 import ToDoList from './Components/To-Do-List';
 import SignupPage from './Components/SignupPage';
 
-
 function App() {
   const [tasks, setTasks] = useState([]); //contains tasks
 
-
-  function addTask(task, category, dueDate) {
+  function addTask(task, category, dueDate, priority) {
     const newTask = {
       id: Date.now(),
       text: task,
       category: category,
       dueDate: dueDate,
-      completed: false
+      completed: false,
+      priority: priority 
     };
-
-
 
     const newTasks = [...tasks, newTask]; //add new task to tasks in a new array
     setTasks(newTasks); //update state
-  };
+  }
 
   function taskRemove(id) {
     const updatedTasks = tasks.filter(task => task.id !== id);
     setTasks(updatedTasks);
-  };
+  }
 
   function edit(id, newText) {
     const updatedTasks = tasks.map(task => { //make array of tasks with completed status for the task with the specified id
@@ -49,7 +46,6 @@ function App() {
 
     setTasks(updatedTasks);
   }
-
 
   function toggleTaskCompletion(id) {
     const updatedTasks = tasks.map(task => {
@@ -67,19 +63,17 @@ function App() {
     setTasks(updatedTasks);
   }
 
-
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/signup" element={<SignupPage />} />
-
         <Route path="/login" element={<LoginPage />} />
         <Route path="/todo" element={
           <div className="App">
             <ToDoTitle />
             <main className="p-4">
-              <ToDoFrame tasks={tasks} addTask={addTask} taskRemove={taskRemove} edit={edit} toggleTaskCompletion={toggleTaskCompletion} />
+              <ToDoFrame tasks={tasks} addTask={addTask} taskRemove={taskRemove} edit={edit} toggleTaskCompletion={toggleTaskCompletion}/>
             </main>
           </div>
         } />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './style.css';
 
-function ToDoList({ tasks, taskRemove, edit, toggleTaskCompletion }) { //creates todo list
+function ToDoList({ tasks, taskRemove, edit, toggleTaskCompletion }) {
     const [editMode, setEditMode] = useState(null);
     const [editText, setEditText] = useState('');
 
@@ -21,10 +21,19 @@ function ToDoList({ tasks, taskRemove, edit, toggleTaskCompletion }) { //creates
         for (let i = 0; i < tasks.length; i++) {
             let task = tasks[i];
             let toDoItem;
+            let priorityClass = '';
+
+            if (task.priority === 'High') {
+                priorityClass = 'high-priority';
+            } else if (task.priority === 'Medium') {
+                priorityClass = 'medium-priority';
+            } else if (task.priority === 'Low') {
+                priorityClass = 'low-priority';
+            }
 
             if (editMode === task.id) {
                 toDoItem = (
-                    <li key={task.id} className="to-do-item">
+                    <li key={task.id} className={`to-do-item ${priorityClass}`}>
                         <input
                             type="text"
                             value={editText}
@@ -36,8 +45,8 @@ function ToDoList({ tasks, taskRemove, edit, toggleTaskCompletion }) { //creates
                 );
             } else {
                 toDoItem = (
-                    <li key={task.id} className={`to-do-item ${task.completed ? 'completed' : ''}`}>
-                        <span>{task.text}</span>
+                    <li key={task.id} className={`to-do-item ${task.completed ? 'completed' : ''} ${priorityClass}`}>
+                        <span className="task-details">{task.text} - {task.priority} - {task.category} - {task.dueDate}</span>
                         <div className="button-container">
                             <button onClick={() => handleEditClick(task)} className="edit-button">Edit</button>
                             <button onClick={() => taskRemove(task.id)} className="remove-button">Remove</button>
@@ -54,7 +63,7 @@ function ToDoList({ tasks, taskRemove, edit, toggleTaskCompletion }) { //creates
     }
 
     return (
-        <ul>
+        <ul className="to-do-list">
             {createList(tasks)}
         </ul>
     );
