@@ -13,8 +13,10 @@ import SignupPage from './Components/SignupPage';
 import ProgressTracker from './Components/ProgressTracker';
 
 function App() {
-  const [tasks, setTasks] = useState([]); //contains tasks
+  const [tasks, setTasks] = useState([]); // Contains tasks
+  const [filter, setFilter] = useState('all');
 
+  // function to add a new task
   function addTask(task, category, dueDate, priority) {
     const newTask = {
       id: Date.now(),
@@ -22,23 +24,24 @@ function App() {
       category: category,
       dueDate: dueDate,
       completed: false,
-      priority: priority 
+      priority: priority
     };
 
     const newTasks = [...tasks, newTask]; //add new task to tasks in a new array
     setTasks(newTasks); //update state
   }
 
+  //function to remove a task
   function taskRemove(id) {
     const updatedTasks = tasks.filter(task => task.id !== id);
     setTasks(updatedTasks);
   }
 
+  //function to edit a task
   function edit(id, newText) {
-    const updatedTasks = tasks.map(task => { //make array of tasks with completed status for the task with the specified id
-
-      if (task.id === id) { // if the task id matches the id of the task to be edited
-        const updatedTask = { ...task, text: newText }; //create a new task with completed status opposite to the current status
+    const updatedTasks = tasks.map(task => {
+      if (task.id === id) { //if the task id matches the id of the task to be edited
+        const updatedTask = { ...task, text: newText }; //create a new task with updated text
         return updatedTask;
       } else {
         return task; //otherwise return the task as is
@@ -48,6 +51,7 @@ function App() {
     setTasks(updatedTasks);
   }
 
+  //function to toggle task completion status
   function toggleTaskCompletion(id) {
     const updatedTasks = tasks.map(task => {
       if (task.id === id) {
@@ -64,13 +68,21 @@ function App() {
     setTasks(updatedTasks);
   }
 
+  //function to set the task filter
+  function setTaskFilter(filter) {
+    setFilter(filter);
+  }
 
+  //filter tasks based on the current filter
+  const filteredTasks = tasks.filter(task => {
+    if (filter === 'completed') return task.completed;
+    if (filter === 'incomplete') return !task.completed;
+    return true;
+  });
 
   const completedTasks = tasks.filter(task => task.completed).length;
   const totalTasks = tasks.length;
   const progress = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100;
-
-
 
   return (
     <Router>
@@ -83,7 +95,7 @@ function App() {
             <ToDoTitle />
             <ProgressTracker progress={progress} />
             <main className="p-4">
-              <ToDoFrame tasks={tasks} addTask={addTask} taskRemove={taskRemove} edit={edit} toggleTaskCompletion={toggleTaskCompletion}/>
+              <ToDoFrame tasks={filteredTasks} addTask={addTask} taskRemove={taskRemove} edit={edit} toggleTaskCompletion={toggleTaskCompletion} setTaskFilter={setTaskFilter} />
             </main>
           </div>
         } />
