@@ -1,0 +1,9 @@
+npm install react react-dom
+npm install react-scripts
+npm install react-router-dom
+npm install tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+npm install react-beautiful-dnd
+npm install express
+npm run build
+npm start
