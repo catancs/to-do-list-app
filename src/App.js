@@ -10,6 +10,7 @@ import LoginPage from './Components/LoginPage';
 import ToDoAdd from './Components/To-Do-Add';
 import ToDoList from './Components/To-Do-List';
 import SignupPage from './Components/SignupPage';
+import ProgressTracker from './Components/ProgressTracker';
 
 function App() {
   const [tasks, setTasks] = useState([]); //contains tasks
@@ -63,6 +64,14 @@ function App() {
     setTasks(updatedTasks);
   }
 
+
+
+  const completedTasks = tasks.filter(task => task.completed).length;
+  const totalTasks = tasks.length;
+  const progress = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100;
+
+
+
   return (
     <Router>
       <Routes>
@@ -72,6 +81,7 @@ function App() {
         <Route path="/todo" element={
           <div className="App">
             <ToDoTitle />
+            <ProgressTracker progress={progress} />
             <main className="p-4">
               <ToDoFrame tasks={tasks} addTask={addTask} taskRemove={taskRemove} edit={edit} toggleTaskCompletion={toggleTaskCompletion}/>
             </main>
